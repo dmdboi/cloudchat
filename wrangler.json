@@ -5,11 +5,7 @@
 	"name": "chat",
 	"upload_source_maps": true,
 	"d1_databases": [
-		{
-			"binding": "DB",
-			"database_name": "dcchat",
-			"database_id": "a5b7e7e2-9d48-4e39-b01a-790041f03e12"
-		}
+
 	],
 	"observability": {
 		"enabled": true

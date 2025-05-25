@@ -16,10 +16,10 @@ export function renderHtml(datacenter: string): string {
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
         <style>
         body {
+              font-family: 'Comic Sans MS', 'Comic Sans', cursive, Arial, sans-serif;
       margin: 0;
       padding: 0;
 background: radial-gradient(circle, #0066cc 0%, #004080 100%);
-      font-family: Arial, sans-serif;
       color: white;
       display: flex;
       align-items: center;

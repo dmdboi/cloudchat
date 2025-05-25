@@ -1,59 +1,25 @@
-# Worker + D1 Database
+# cloud-chat
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/d1-template)
+Cloudflare-based chat application that connects you to other people using the same Cloudflare datacenter.
 
-![Worker + D1 Template Preview](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/cb7cb0a9-6102-4822-633c-b76b7bb25900/public)
+## Explanation
 
-<!-- dash-content-start -->
+This application uses Cloudflare's global edge network to create location-based chat rooms. When a user visits the site, their requests are automatically routed through the nearest Cloudflare datacenter (for example, LHR for London, UK). As a result, users in the same geographic region (and thus the same Cloudflare datacenter) are grouped together, enabling real-time, local chat experiences based on where their traffic enters the Cloudflare network.
 
-D1 is Cloudflare's native serverless SQL database ([docs](https://developers.cloudflare.com/d1/)). This project demonstrates using a Worker with a D1 binding to execute a SQL statement. A simple frontend displays the result of this query:
+It's like proximity chat but for the web!
 
-```SQL
-SELECT * FROM comments LIMIT 3;
-```
+## Example
 
-The D1 database is initialized with a `comments` table and this data:
+If you're based in the UK, your Cloudflare datacenter is likely to be in London. If you connect to the chat, you'll be able to chat with other people who are also connected to the London datacenter.
 
-```SQL
-INSERT INTO comments (author, content)
-VALUES
-    ('Kristian', 'Congrats!'),
-    ('Serena', 'Great job!'),
-    ('Max', 'Keep up the good work!')
-;
-```
+## Usage
 
-> [!IMPORTANT]
-> When using C3 to create this project, select "no" when it asks if you want to deploy. You need to follow this project's [setup steps](https://github.com/cloudflare/templates/tree/main/d1-template#setup-steps) before deploying.
+Sign up with a username and password, you'll automatically be assigned to a datacenter based on the request sent to Cloudflare. You can then chat with other users in the same datacenter.
 
-<!-- dash-content-end -->
+## Development
 
-## Getting Started
+To run the application locally, you'll need to create a D1 database either locally or on Cloudflare, then run `npx wrangler dev` to start the development server.
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+## Deployment
 
-```
-npm create cloudflare@latest -- --template=cloudflare/templates/d1-template
-```
-
-A live public deployment of this template is available at [https://d1-template.templates.workers.dev](https://d1-template.templates.workers.dev)
-
-## Setup Steps
-
-1. Install the project dependencies with a package manager of your choice:
-   ```bash
-   npm install
-   ```
-2. Create a [D1 database](https://developers.cloudflare.com/d1/get-started/) with the name "d1-template-database":
-   ```bash
-   npx wrangler d1 create d1-template-database
-   ```
-   ...and update the `database_id` field in `wrangler.json` with the new database ID.
-3. Run the following db migration to initialize the database (notice the `migrations` directory in this project):
-   ```bash
-   npx wrangler d1 migrations apply --remote d1-template-database
-   ```
-4. Deploy the project!
-   ```bash
-   npx wrangler deploy
-   ```
+Run `npx wrangler deploy` to deploy the application to Cloudflare Workers. Make sure you have your D1 database configured in your `wrangler.toml` file.

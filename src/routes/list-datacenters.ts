@@ -1,5 +1,3 @@
-import { response } from "../response";
-
 export async function handleListDatacenters(request: Request, env: any): Promise<Response> {
   const datacenters = await env.DB.prepare(`Select datacenter from users`).all();
 
