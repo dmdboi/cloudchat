@@ -16,6 +16,8 @@ If you're based in the UK, your Cloudflare datacenter is likely to be in London.
 
 Sign up with a username and password, you'll automatically be assigned to a datacenter based on the request sent to Cloudflare. You can then chat with other users in the same datacenter.
 
+[Cloudchat](https://chat.dmdboi.me)
+
 ## Development
 
 To run the application locally, you'll need to create a D1 database either locally or on Cloudflare, then run `npx wrangler dev` to start the development server.
