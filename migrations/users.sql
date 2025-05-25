@@ -1,0 +1,23 @@
+-- Migration number: 0001 	 2024-12-27T22:04:18.794Z
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY NOT NULL,
+    uid TEXT NOT NULL,
+    password TEXT NOT NULL,
+    username TEXT NOT NULL,
+    datacenter TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+DROP TABLE IF EXISTS messages;
+
+CREATE TABLE IF NOT EXISTS messages (
+    id INTEGER PRIMARY KEY NOT NULL,
+    user_id INTEGER NOT NULL,
+    username TEXT NOT NULL,
+    content TEXT NOT NULL,
+    gif TEXT,
+    datacenter TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
